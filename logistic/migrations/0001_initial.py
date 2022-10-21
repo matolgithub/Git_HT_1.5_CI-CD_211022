@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             name='Product',
             fields=[
                 ('id', models.BigAutoField(auto_created=True,
-                                           primary_key=True, serialize=False, verbose_name='ID')),
+                                           primary_key=True, serialize=False, verbose_name='ID')),  # noqa
                 ('title', models.CharField(max_length=60, unique=True)),
                 ('description', models.TextField(blank=True, null=True)),
             ],
@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
             name='Stock',
             fields=[
                 ('id', models.BigAutoField(auto_created=True,
-                                           primary_key=True, serialize=False, verbose_name='ID')),
+                                           primary_key=True, serialize=False, verbose_name='ID')),  # noqa
                 ('address', models.CharField(max_length=200, unique=True)),
             ],
         ),
@@ -33,20 +33,17 @@ class Migration(migrations.Migration):
             name='StockProduct',
             fields=[
                 ('id', models.BigAutoField(auto_created=True,
-                                           primary_key=True, serialize=False, verbose_name='ID')),
+                                           primary_key=True, serialize=False, verbose_name='ID')),  # noqa
                 ('quantity', models.PositiveIntegerField(default=1)),
                 ('price', models.DecimalField(decimal_places=2, max_digits=18,
-                                              validators=[django.core.validators.MinValueValidator(0)])),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
-                                              related_name='positions', to='logistic.product')),
-                ('stock', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE,
-                                            related_name='positions', to='logistic.stock')),
+                                              validators=[django.core.validators.MinValueValidator(0)])),   # noqa
+                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='positions', to='logistic.product')),   # noqa
+                ('stock', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='positions', to='logistic.stock')),   # noqa
             ],
         ),
         migrations.AddField(
             model_name='stock',
             name='products',
-            field=models.ManyToManyField(related_name='stocks',
-                                         through='logistic.StockProduct', to='logistic.Product'),
+            field=models.ManyToManyField(related_name='stocks', through='logistic.StockProduct', to='logistic.Product'),    # noqa
         ),
     ]
