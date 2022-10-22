@@ -4,6 +4,7 @@ psycopg2-binary
 python-dotenv
 flake8
 gunicorn
+django-filter
 django-heroku
 pytest
 pytest-django
