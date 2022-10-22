@@ -1,6 +1,6 @@
 name: Django Testing and Deploy
 
-#Указываем при каких условиях срабатывает workflow
+#Указываем условиясрабатывания workflow
 on:
   push:
     branches: [master]
@@ -47,7 +47,7 @@ jobs:
       - name: Установка библиотек
         run: pip install -r requirements.txt
 
-      - name: Линтинг кода
+      - name: Линтинг кода (проверка на соответствие РЕР8)
         run: flake8 logistic
 
       - name: Тестирование
