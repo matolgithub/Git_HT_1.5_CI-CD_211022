@@ -33,7 +33,7 @@ jobs:
           --health-timeout 5s
           --health-retries 5
     steps:
-      - name: Проверяем репозиторий на наличие изменений
+      - name: Проверяем наш репозиторий GIT на наличие изменений
         uses: actions/checkout@v2
 
       - name: Установка python
@@ -50,8 +50,8 @@ jobs:
       - name: Линтинг кода
         run: flake8 logistic
 
-      - name: Тестинг
-        run: python manage.py test
+      - name: Тестирование
+        run: pytest
         env:
           SECRET_KEY: ${{ env.SECRET_KEY }}
           DEBUG: "0"
